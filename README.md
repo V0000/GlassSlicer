@@ -11,7 +11,7 @@ Glass Slicer - это игра, которая поможет вам рассл�
 ![](Screenshots/0.jpg)
 ![](Screenshots/1.jpg)
 ![](Screenshots/2.jpg)
-![](Screenshots/3.jpg)
+
 ## Установка:
 
 1. Перейдите на страничку игры в [Google Play](https://play.google.com/store/apps/details?id=com.Ryabchenko.GlassSlicer).
