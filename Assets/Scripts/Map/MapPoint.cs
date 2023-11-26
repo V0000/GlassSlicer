@@ -1,18 +1,26 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace Map
 {
     public class MapPoint : MonoBehaviour
     {
+        #region Private variables
+        
         [SerializeField] private TextMeshProUGUI levelNumberText;
         [SerializeField] private GameObject maxMarker;
         [SerializeField] private GameObject lockSign;
-        public MapManager mapManager;
+        
     
         private Button _button;
         private int _lvlNumber;
+        private MapManager _mapManager;
+        
+        #endregion
+
+        #region Public methods
 
         public void SetText(int number)
         {
@@ -30,6 +38,11 @@ namespace Map
             maxMarker.SetActive(true);
             lockSign.SetActive(false);
         }
+        
+        public void SetMapManager(MapManager mapManager)
+        {
+            _mapManager = mapManager;
+        }
     
         public void SetLocked()
         {
@@ -43,8 +56,10 @@ namespace Map
 
         public void GoToLevel()
         {
-            mapManager.LoadLevel(_lvlNumber);
+            _mapManager.LoadLevel(_lvlNumber);
             Debug.LogWarning($"{_lvlNumber} is loading");
         }
+        
+        #endregion
     }
 }

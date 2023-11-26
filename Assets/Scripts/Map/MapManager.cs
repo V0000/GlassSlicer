@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Data;
 using Game;
 using LevelsData;
 using Map;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Zenject;
 
 public class MapManager : MonoBehaviour
 {
@@ -16,9 +18,14 @@ public class MapManager : MonoBehaviour
     private LevelData[] _levelsData;
     private GameInfo _gameInfo;
     private DataLoaderSaver _dataLoaderSaver;
+    
+    [Inject]
+    public void Initialize(DataLoaderSaver dataLoaderSaver)
+    {
+        _dataLoaderSaver = dataLoaderSaver;
+    }
     void Start()
     {
-        _dataLoaderSaver = new DataLoaderSaver();
         _levelsData = _dataLoaderSaver.LoadLevelData();
         _gameInfo = _dataLoaderSaver.LoadGameData();
         BuildMap();
@@ -37,7 +44,7 @@ public class MapManager : MonoBehaviour
             instantiatedObject.transform.SetParent(map.transform, false);
             MapPoint mapPointInst = instantiatedObject.GetComponent<MapPoint>();
             mapPointInst.SetText(lvlId);
-            mapPointInst.mapManager = this;
+            mapPointInst.SetMapManager(this);
             if (_gameInfo.maxLevelNumber == lvlId)
             {
                 mapPointInst.SetActual();
@@ -54,7 +61,7 @@ public class MapManager : MonoBehaviour
     public void LoadLevel(int levelName)
     {
         _gameInfo.currentLevelNumber = levelName;
-        _dataLoaderSaver.SaveData(_gameInfo);
+        _dataLoaderSaver.SaveGameData(_gameInfo);
         SceneManager.LoadScene("Level");
     }
     

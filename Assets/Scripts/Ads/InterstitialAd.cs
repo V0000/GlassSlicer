@@ -6,9 +6,14 @@ namespace Ads
     //Межсценовая реклама (решено пока не реализовывать)
     public class InterstitialAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
     {
+        #region Private variables
+        
         [SerializeField] private string _androidAdUnityId = "Interstitial_Android";
         [SerializeField] private string _iOsAdUnityId = "Interstitial_iOS";
         private string _adUnityId;
+        
+        #endregion
+        
         public static InterstitialAd StaticAd;
         void Awake()
         {
@@ -24,6 +29,9 @@ namespace Ads
             Advertisement.Load(_adUnityId, this);
         }
     
+        #region Public methods
+
+        
         public void ShowAd()
         {
             Advertisement.Show(_adUnityId, this);
@@ -54,6 +62,7 @@ namespace Ads
         {
         }
 
+        #endregion
 
     }
 }

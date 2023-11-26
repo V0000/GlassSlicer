@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+//класс для логирования на девайсе
 public class LogConsole : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI logTextMeshPro;

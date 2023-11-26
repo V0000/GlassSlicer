@@ -1,36 +1,44 @@
-using System;
 using Map;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Zenject;
 
 namespace Market
 {
     public class MarketBuilder : MonoBehaviour
     {
-        [SerializeField] private LotHandler lotPrefab;
-        [SerializeField] private GameObject lotParent;
-        [SerializeField] private LotDataContainer lotData;
+        #region Private variables
+        [SerializeField] private ItemHandler itemPrefab;
+        [SerializeField] private ItemsSlideViewPanel itemSlideViewPanel;
         [SerializeField] private ScrollMover scrollMover;
-        [SerializeField] private MoneyHandler moneyHandler;
+        [SerializeField] private UIMoneyHandler uiMoneyHandler;
         
+        private ItemDataContainer _itemsData;
+        #endregion
+        
+        [Inject]
+        public void Initialize(ItemDataContainer itemsData)
+        {
+            _itemsData = itemsData;
+        }
         void Start()
         {
             int id = 0;
-            foreach (Lot lot in lotData.lots)
+            foreach (Item lot in _itemsData.items)
             {
-                //Debug.Log("Price: " + lot.price);
-                //Debug.Log("Is Locked: " + lot.isLocked);
             
-                GameObject instantiatedObject = Instantiate(lotPrefab.gameObject);
-                instantiatedObject.transform.SetParent(lotParent.transform, false);
+                GameObject instantiatedObject = Instantiate(itemPrefab.gameObject);
+                instantiatedObject.transform.SetParent(itemSlideViewPanel.transform, false);
 
-                LotHandler instantiatedLot = instantiatedObject.GetComponent<LotHandler>();
-                instantiatedLot.SetLotValues(lot, id, moneyHandler);
+                ItemHandler instantiatedItem = instantiatedObject.GetComponent<ItemHandler>();
+                instantiatedItem.SetItemValues(_itemsData, lot, id, uiMoneyHandler);
+                instantiatedObject.SetActive(true);
                 id++;
 
             }
 
-            moneyHandler.SetMoneyText(lotData.money);
-            float scrollPosition = (float)lotData.activeID / (float)(lotData.lots.Length-1);
+            uiMoneyHandler.SetMoneyText(_itemsData.money);
+            float scrollPosition = (float)_itemsData.activeID / (float)(_itemsData.items.Length-1);
             scrollMover.SetScrollValueY(scrollPosition);
         }
 

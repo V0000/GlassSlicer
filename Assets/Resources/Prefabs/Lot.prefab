@@ -349,5 +349,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   price: {fileID: 2339430870038658125}
   lockObject: {fileID: 2339430869899035990}
-  lotDataContainer: {fileID: 11400000, guid: 962d58416b28257439a2c9e64b6c31a7, type: 2}
   backGroundImage: {fileID: 2339430870984563798}
+  _itemsData: {fileID: 11400000, guid: 962d58416b28257439a2c9e64b6c31a7, type: 2}

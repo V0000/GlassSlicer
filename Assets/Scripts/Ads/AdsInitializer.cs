@@ -3,18 +3,25 @@ using UnityEngine.Advertisements;
 
 namespace Ads
 {
+    // Инициализация рекламы
     public class AdsInitializer : MonoBehaviour, IUnityAdsInitializationListener
     {
+        #region Private variables
+        
         [SerializeField] private string _androidGameId = "5446719";
         [SerializeField] private string _iOSGameId = "5446718";
         [SerializeField] private bool _testMode = true;
         private string _gameId;
-
+        
+        #endregion
+        
         void Awake()
         {
             InitializeAds();
         }
-
+        
+        #region Public methods
+        
         public void InitializeAds()
         {
 #if UNITY_IOS
@@ -40,5 +47,7 @@ namespace Ads
         {
             Debug.Log($"Unity Ads Initialization Failed: {error.ToString()} - {message}");
         }
+        
+        #endregion
     }
 }

@@ -12,10 +12,19 @@ namespace Map
 
         private void Start()
         {
-            _initialPosition = transform.position;
+            Initialize();
         }
 
         private void Update()
+        {
+            UpdateParallax();
+        }
+        private void Initialize()
+        {
+            _initialPosition = transform.position;
+        }
+
+        private void UpdateParallax()
         {
             float scrollValue = scrollRect.normalizedPosition.y;
 

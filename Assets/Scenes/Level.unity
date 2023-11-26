@@ -614,7 +614,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa9ecee6ea7b1f1469008cb8b2b7323c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelBuilder: {fileID: 1784820332}
 --- !u!4 &116066959
 Transform:
   m_ObjectHideFlags: 0
@@ -1285,6 +1284,91 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 211470066}
   m_CullTransparentMesh: 1
+--- !u!1 &226360574
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 226360577}
+  - component: {fileID: 226360576}
+  - component: {fileID: 226360575}
+  m_Layer: 0
+  m_Name: SceneContext
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &226360575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226360574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e20a28cf7ca97ae49b6a125a13de9382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 1255790399}
+  finalScreen: {fileID: 178219436}
+  hintBaseRewardedAdsButton: {fileID: 1944420944}
+  mouseBehaviour: {fileID: 1432756625}
+  itemDataContainer: {fileID: 11400000, guid: 962d58416b28257439a2c9e64b6c31a7, type: 2}
+  levelBuilder: {fileID: 1784820332}
+  meshGenerator: {fileID: 547440383}
+  hintLineDrawer: {fileID: 1989738024}
+--- !u!114 &226360576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226360574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scriptableObjectInstallers: []
+  _monoInstallers:
+  - {fileID: 226360575}
+  _installerPrefabs: []
+  _autoRun: 1
+  OnPreInstall:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostInstall:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPreResolve:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPostResolve:
+    m_PersistentCalls:
+      m_Calls: []
+  _parentNewObjectsUnderSceneContext: 0
+  _contractNames: []
+  _parentContractNames: []
+--- !u!4 &226360577
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226360574}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &242883362
 GameObject:
   m_ObjectHideFlags: 0
@@ -1945,7 +2029,7 @@ GameObject:
   - component: {fileID: 404286158}
   - component: {fileID: 404286159}
   m_Layer: 0
-  m_Name: ButtonController
+  m_Name: NavigationButtonsHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1964,7 +2048,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &404286159
 MonoBehaviour:
@@ -3803,15 +3887,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c4e30775db9d5546af2da2e19b06de6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  finalScreen: {fileID: 178219436}
   movesText: {fileID: 1841309411}
   hintsText: {fileID: 139916342}
-  mouseBehaviour: {fileID: 1432756625}
   pinsCounter: {fileID: 1319144054}
-  lineDrawer: {fileID: 1989738024}
-  lotDataContainer: {fileID: 11400000, guid: 962d58416b28257439a2c9e64b6c31a7, type: 2}
   backGroundImage: {fileID: 2081081859}
-  hintRewardedAdsButton: {fileID: 1944420944}
 --- !u!4 &1255790400
 Transform:
   m_ObjectHideFlags: 0
@@ -3825,7 +3904,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1319144052
 GameObject:
@@ -5029,7 +5108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052287202a9e24741b16a2323ab4ffbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshGenerator: {fileID: 547440383}
   pinParent: {fileID: 1319144052}
   pinPrefab: {fileID: 982563024516410754, guid: 9a2834e59408aad438e8f1c7d1c38280, type: 3}
 --- !u!4 &1784820333
@@ -5529,7 +5607,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1944420943
 MonoBehaviour:
@@ -5545,7 +5623,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _androidGameId: 5446719
   _iOSGameId: 5446718
-  _testMode: 0
+  _testMode: 1
 --- !u!114 &1944420944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5561,7 +5639,6 @@ MonoBehaviour:
   _showAdButton: {fileID: 1613323222}
   _androidAdUnitId: Rewarded_Android
   _iOSAdUnitId: Rewarded_iOS
-  _gameManager: {fileID: 1255790399}
   rewardedHints: 2
 --- !u!1 &1975832326
 GameObject:
@@ -5828,7 +5905,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1989738024
 MonoBehaviour:
