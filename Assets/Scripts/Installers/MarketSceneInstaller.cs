@@ -1,3 +1,4 @@
+using Data;
 using Market;
 using UnityEngine;
 using Zenject;
@@ -11,6 +12,7 @@ namespace Installers
         {
             Container.Bind<MarketManager>().FromInstance(marketManager);
             Container.Bind<ItemDataContainer>().FromInstance(itemDataContainer);
+            Container.Bind<DataLoaderSaver>().To<DataLoaderSaver>().AsSingle().Lazy();
         }
     }
 }
